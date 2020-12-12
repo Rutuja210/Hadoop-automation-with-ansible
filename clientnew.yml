@@ -1,0 +1,24 @@
+- hosts: client
+  vars_files:
+     - client_var.yml
+  tasks:
+  - name: "Copying the hadoop File"
+    copy:
+     src: "{{ hadoop_path }}"
+     dest: "/root/"
+    register: hadoop
+  - name: "Copying the JDK File"
+    copy:
+     src: "{{ jdk_path }}"
+     dest: "/root/"
+    register: java
+  - name: "Installing Jdk"
+    shell: "rpm -ivh {{ jdk_software }}"
+    when: java.changed !=false
+  - name: "Installing Hadoop"
+    shell: "rpm -ivh {{ hadoop_software }}  --force"
+    when: hadoop.changed!=false
+  - name: "Copying the core-site.xml file"
+    copy:
+      src: "{{ core_site }}"
+      dest: "/etc/hadoop/"
