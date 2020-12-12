@@ -1,0 +1,9 @@
+[datanode]
+65.0.184.44    ansible_user=root   ansible_ssh_pass=bvcoew   ansible_connection=ssh
+
+[namenode]
+13.233.223.199    ansible_user=root   ansible_ssh_pass=bvcoew     ansible_connection=ssh
+
+
+[client]
+15.206.73.231  ansible_user=root  ansible_ssh_pass=bvcoew   ansible_connection=ssh
